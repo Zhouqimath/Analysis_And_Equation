@@ -1,0 +1,138 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{amsfonts}
+\usepackage{CJK}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\begin{document}
+\begin{CJK}{GBK}{song}
+
+
+\title{\emph{\Large Lyapunov}稳定性}
+\author{周歧}
+\maketitle
+
+ \begin{spacing}{2.5}
+ \begin{align}
+  \overrightarrow{x}&=f\left(x\right)\\
+  \overrightarrow{x}&=f\left(x,t\right)
+ \end{align}
+ \begin{definition}
+  设$\varphi\left(t\right)$为$\overrightarrow{x}=f\left(x,t\right)$，$x\in\mathbb{R}^{n}$的解：$\varphi\left(t_{0}\right)=x_{0}$。对$\forall\varepsilon>0$，$\exists\delta$，$\left|y_{0}-\varphi\left(t_{0}\right)\right|<\delta$，有$\left|x\left(t,t_{0},y_{0}\right)-\varphi\left(t\right)\right|<\varepsilon$，（$x\left(t,t_{0},y_{0}\right)$表示过$y_{0}$ 在$t_{0}$时刻走过的“解”）。则称$\varphi\left(t\right)$是在\emph{Lyapunov}意义下的稳定。
+ \end{definition}
+
+ \begin{definition}
+  设$\varphi\left(t\right)$为$\overrightarrow{x}=f\left(x,t\right)$，$x\in\mathbb{R}^{n}$的解：$\varphi\left(t_{0}\right)=x_{0}$。对$\forall\varepsilon>0$，$\exists\delta$，$\left|y_{0}-\varphi\left(t_{0}\right)\right|<\delta$，有$\left|x\left(t,t_{0},y_{0}\right)-\varphi\left(t\right)\right|\rightarrow0$ \quad $\left(t\rightarrow+\infty\right)$，
+  （$x\left(t,t_{0},y_{0}\right)$ 表示过$y_{0}$ 在$t_{0}$ 时刻走过的“解”），对$t\geq t_{0}$时成立。则称$\varphi\left(t\right)$ 是在\emph{Lyapunov} 意义下的渐近稳定。
+ \end{definition}
+
+ \begin{flushleft}
+  现进行坐标平移：
+ \end{flushleft}
+令$y=x-\varphi\left(t\right)$，则$\overrightarrow{y}=f\left(y+\varphi\left(t\right),t\right)-f\left(\varphi\left(t\right),t\right)=\dfrac{\partial f}{\partial x}\left(\varphi\left(t\right),t\right)\cdot y+O_{2}\left(y\right)$（\emph{Taylor}）\\
+ $\longrightarrow$\\
+ \begin{equation}
+  \overrightarrow{y}=A\left(t\right)y+N\left(y,t\right)
+ \end{equation}
+ $\Longrightarrow$
+ \begin{center}
+ （3）的零解稳定性$\Longleftrightarrow$（2）的解的稳定性
+ \end{center}
+
+\begin{flushleft}
+\underline{\textbf{\large 下研究$\overrightarrow{y}=A\left(t\right)y$（线性微分方程组）的零解稳定性：}}
+\end{flushleft}
+
+对于$\overrightarrow{y}=A\left(t\right)y$有基本解矩阵$\Phi\left(t\right)$，其中$\overrightarrow{y}=A\left(t\right)y$满足$\Phi\left(0\right)=I$，$\Phi\left(t\right)=A\left(t\right)\Phi\left(t\right)$。则$\overrightarrow{y}=A\left(t\right)y$的通解为$\Phi\left(t\right)c$
+
+ \begin{lemma}
+  $\overrightarrow{y}=A\left(t\right)y$的零解稳定$\Leftrightarrow \exists k>0,s.t.\quad t\geq t_{0},\left\|\Phi\left(t\right)\right\|<k$，其中$\left\|\Phi\right\|$定义为$\ sup_{\left\|x\right\|=1}\left\|\Phi\left(x\right)\right\|$
+ \end{lemma}
+ \textbf{Proof：}\\
+ “$\Rightarrow$”
+ $\overrightarrow{y}=A\left(t\right)y$的稳定性$\Leftrightarrow \forall\varepsilon>0,\exists\delta>0$，当$\left|x_{0}\right|<\delta$时，有$\left|\Phi\left(t\right)x_{0}\right|<\varepsilon$
+ \begin{quote}
+  $\Rightarrow$取$\varepsilon=1,\exists\delta_{1}$，当$\left|x_{0}\right|<\delta$时，有$\left|\Phi\left(t\right)x_{0}\right|<1$\\
+  $\Rightarrow\sup_{\left\|x_{0}\right\|=\dfrac{\delta_{1}}{2}}\left|\Phi\left(t\right)x_{0}\right|\leq 1$\\ $\Rightarrow\sup_{\left\|x_{0}\right\|=\dfrac{\delta_{1}}{2}}\dfrac{\left|\Phi\left(t\right)x_{0}\right|}{\left|x_{0}\right|}\leq\dfrac{2}{\delta_{1}}$\\
+  $\Rightarrow\sup_{\left\|x_{0}\right\|=\dfrac{\delta_{1}}{2}}\left|\Phi\left(t\right)\dfrac{x_{0}}{\left|x_{0}\right|}\right|\leq\dfrac{2}{\delta_{1}}$\\
+  $\Rightarrow\left\|\Phi\left(t\right)\right\|\leq\dfrac{2}{\delta_{1}}=k$\\
+  从而有$\left\|\Phi\left(t\right)\right\|<k$
+ \end{quote}
+
+ \begin{corollary}
+  $\overrightarrow{y}=A\left(t\right)y$的零解稳定$\Leftrightarrow \left\|\Phi\left(t\right)\right\|\rightarrow0\left(t\rightarrow+\infty\right)$
+ \end{corollary}
+ \textbf{Proof：}\\
+ “$\Leftarrow$”
+  $\left|\Phi\left(t\right)c\right|\leq\left\|\Phi\right\|\left|c\right|\rightarrow0$
+  \begin{quote}
+   $\Rightarrow\left|\Phi\left(t\right)c\right|\rightarrow0\forall c\in\mathbb{R}^{n}$\\
+   $\Rightarrow\overrightarrow{y}=A\left(t\right)y$的零解稳定
+  \end{quote}
+
+由于含参系数的微分方程组的基本解矩阵是不易求解的，所以考虑常系数线性微分方程组的稳定性。\\
+
+\begin{flushleft}
+\underline{\textbf{\large 下研究常系数微分方程组$\overrightarrow{y}=Ay$的稳定性：}}
+\end{flushleft}
+由于常系数线性微分方程组的基本解矩阵为$\Phi\left(t\right)=e^{At}$，又$A=P^{-1}diag\left\{J_{1},\cdot\cdot\cdot,J_{s}\right\}P$，从而有$\Phi\left(t\right)=e^{P^{-1}diag\left\{J_{1}t,\cdot\cdot\cdot,J_{s}t\right\}P}=P^{-1}e^{diag\left\{J_{1}t,\cdot\cdot\cdot,J_{s}t\right\}}P$，
+故$\Phi\left(t\right)=P^{-1}diag\left\{e^{J_{1}t},\cdot\cdot\cdot,e^{J_{s}t}\right\}P$\\
+从而研究$\Phi\left(t\right)$的有界性，即研究$diag\left\{e^{J_{1}t},\cdot\cdot\cdot,e^{J_{s}t}\right\}$的有界性。
+\begin{enumerate}
+  \item 若$A$的特征值实部都小于0则渐近稳定。
+  \item 若实部等于0且$A$的$\emph{Jordan}$块都是一阶的$\Leftrightarrow$稳定。
+  \item 若$A$有一个特征根的实部为正的，则不稳定。
+\end{enumerate}
+
+\begin{flushleft}
+\underline{\textbf{\large 下研究常系数线性微分方程组与常系数非线性微分方程组稳定性的关系：}}
+\end{flushleft}
+
+ \begin{lemma}
+  设$u\left(t\right),a\left(t\right)\geq 0$，$c,k$均为非负实数，在区间$\left[t_{0},t_{1}\right]$上有$u\left(t\right)\leq c+\int^{t}_{t_{0}}\left(a\left(s\right)u\left(s\right)+k\right)ds$，则$u\left(t\right)\leq\left(c+k\left(t-t_{0}\right)\right)e^{\int^{t}_{t_{0}}a\left(s\right)ds}$。
+ \end{lemma}
+ \textbf{Proof：}
+  令$N\left(t\right)=c+\int^{t}_{t_{0}}\left(s\right)u\left(s+k\right)ds$，从而$\dfrac{u\left(t\right)}{N\left(t\right)}\leq 1$\\
+  $\Rightarrow \dfrac{u\left(t\right)a\left(t\right)}{N\left(t\right)}\leq a\left(t\right)$\\
+  $\Rightarrow \dfrac{u\left(t\right)a\left(t\right)+k}{N\left(t\right)}\leq a\left(t\right)+\dfrac{k}{N\left(t\right)}$\\
+  $\Rightarrow \dfrac{N'\left(t\right)}{N\left(t\right)}\leq a\left(t\right)+\dfrac{k}{N\left(t\right)}$\\
+  $\Rightarrow \dfrac{N'\left(t\right)}{N\left(t\right)}\leq a\left(t\right)+\dfrac{k}{c+k\left(t-t_{0}\right)}$\\
+  $\Rightarrow \int^{t_{0}}_{t}\dfrac{N'\left(s\right)}{N\left(s\right)}ds\leq \int^{t_{0}}_{t}\left(a\left(s\right)+\dfrac{k}{c+k\left(s-t_{0}\right)}\right)ds$\\
+  $\Rightarrow \ln N\left(t\right)\vline^{t}_{t_{0}}\leq \int^{t}_{t_{0}} a\left(s\right)ds+\int^{t}_{t_{0}}\dfrac{1}{c+k\left(s-t_{0}\right)}d\left(ks\right)$\\
+  $\Rightarrow \ln N\left(t\right)-\ln N\left(t_{0}\right)\leq \int^{t}_{t_{0}} a\left(s\right)ds+\ln\left(c+k\left(t-t_{0}\right)\right)-\ln c$\\
+  $\Rightarrow N\left(t\right)\leq \left(c+k\left(t-t_{0}\right)\right)e^{\int^{t}_{t_{0}}a\left(s\right)ds}$\\
+  故$u\left(t\right)\leq\left(c+k\left(t-t_{0}\right)\right)e^{\int^{t}_{t_{0}}a\left(s\right)ds}$
+
+ \begin{theorem}
+  在1.的情况下（$A$的特征值的实部都小于0），$\overrightarrow{x}=Ax+O_{2}\left(x\right)$的零解是渐近稳定的
+ \end{theorem}
+ \textbf{Proof：}
+  $\exists k,\rho >0,s.t.\vline\vline e^{A\left(t-t_{0}\right)}\vline\vline<ke^{-\rho\left(t-t_{0}\right)}$\\
+  依常数变易法知：$\overrightarrow{x}=Ax+O_{2}\left(x\right)$的解为$x\left(t\right)=e^{A\left(t-t_{0}\right)}(x_{0}+\int^{t}_{t_{0}}e^{-A\left(s-t_{0}\right)}O_{2}\left(x\right)ds$\\
+  $\Rightarrow \left|x\left(t\right)=e^{A\left(t-t_{0}\right)}(x_{0}+\int^{t}_{t_{0}}e^{-A\left(s-t_{0}\right)}O_{2}\left(x\right)ds\right|$
+  $\leq ke^{-\rho\left(t-t_{0}\right)}\left|x_{0}\right|+\int^{t}_{t_{0}}ke^{-\rho\left(t-s\right)}\left|x\right|\delta ds$
+  令$k\delta<\dfrac{\rho}{2}$，从而$e^{\rho\left(t-t_{0}\right)}\left|x\left(t\right)\right|\leq k\left|x_{0}\right|+\int^{t}_{t_{0}}ke^{\rho\left(s-t_{0}\right)}\delta\left|x\left(s\right)\right|ds$\\
+  $\leq k\left|x_{0}\right|+k\delta\int^{t}_{t_{0}}e^{\rho\left(s-t_{0}\right)}\left|x\left(s\right)\right|ds$\\
+  依$\emph{Gronwall}$不等式知：$e^{\rho\left(t-t_{0}\right)}\left|x\left(t\right)\right|\leq k\left|x_{0}\right|e^{k\delta \left(t-t_{0}\right)}\leq k\left|x_{0}\right|e^{\dfrac{\rho}{2}\left(t-t_{0}\right)}$\\
+  $\Rightarrow \left|x\left(t\right)\right|\leq k\left| x_{0}\right| e^{-\dfrac{\rho}{2}\left(t-t_{0}\right)}$\\
+  故$\overrightarrow{x}=Ax+O_{2}\left(x\right)$的零解是指数渐近稳定的。
+
+\begin{flushleft}
+\underline{\textbf{\large 下介绍\emph{Lyapunov}第二方法}}
+\end{flushleft}
+
+ \begin{equation}
+  \{^{\overrightarrow{x}=f\left(x\right),x\in\mathbb{R}^{n}}_{f\left(0\right)=0}
+ \end{equation}
+ \begin{enumerate}
+   \item 若存在$V\left(x\right)\geq 0\left(V\left(x\right)=0\Leftrightarrow x=0\right)$
+   \item 设$x\left(t\right)$为（4）的解，$\dfrac{dV\left(x\left(t\right)\right)}{dt}<0\Leftrightarrow G\left(x\right)=\dfrac{\partial V}{\partial x_{1}}f_{1}+\cdot\cdot\cdot+\dfrac{\partial V}{\partial x_{n}}f_{n}<0$
+ \end{enumerate}
+则（4）的解是渐近稳定的
+ \end{spacing}
+
+\end{CJK}
+\end{document}
